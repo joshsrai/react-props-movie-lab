@@ -12,16 +12,25 @@ export default class CardBack extends Component {
 
   generateRatingElement = () => {
     // implement meeeee! See the readme for instructions
+    return this.props.IMDBRating === null ? <h4>No Rating Found</h4> : <img src={imgMapper[this.props.IMDBRating]} alt="" />
+    // For IMDBRating, you will need to finish writing the method generateRatingElement(), which should do the following: if the IMDBRating prop is null, return an <h4> with the contents 'No Rating Found', otherwise, return <img src={imgMapper[prop]} alt="" /> (using the correct prop)
   }
 
   render() {
     return (
       <div className="card-back">
-        <h3 className="title"></h3>
+      {/* In this component, you will need to render the title, genres and IMDBRating. */}
+        <h3 className="title">
+          {this.props.title}
+        </h3>
         <span />
-        { /* your rating element should go here -- you can invoke methods within JSX, à la: this.myMethod() */ }
+        { this.generateRatingElement() }
+        {/* your rating element should go here -- you can invoke methods within JSX, à la: this.myMethod() */ }
         <span />
-        <h5 className="genres"></h5>
+        <h5 className="genres">
+          {this.props.genres.join(', ')}
+          {/* For genres, join each genre together into string with commas separating each. */}
+        </h5>
       </div>
     )
   }
